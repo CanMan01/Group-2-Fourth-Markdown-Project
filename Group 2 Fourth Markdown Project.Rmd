@@ -19,3 +19,20 @@ library(tufte)
 knitr::opts_chunk$set(cache.extra = packageVersion('tufte'))
 options(htmltools.dir.version = FALSE)
 ```
+## Introduction
+
+
+## Methodology
+
+
+## Parameters of Interest
+
+
+## Simple Linear Regression
+
+
+## Discussion
+
+
+## Conclusion
+
