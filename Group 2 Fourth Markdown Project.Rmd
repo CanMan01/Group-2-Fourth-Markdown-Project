@@ -19,18 +19,14 @@ library(tufte)
 knitr::opts_chunk$set(cache.extra = packageVersion('tufte'))
 options(htmltools.dir.version = FALSE)
 ```
-## Introduction
+# Introduction
 
 
-## Methodology
-
-
-## Parameters of Interest
+# Methodology
 
 
 
-
-
+# Simple Linear Regression
 
 <br>
 
@@ -81,7 +77,7 @@ The values above show the amount of people bullied per grade level as well as th
 We use these graphs to examine whether there is a relationship between the variables. These graphs will also help us in forming a linear regression model.
 
 
-## Multiple Linear Regression
+# Multiple Linear Regression
 
 We can use the Formula for linear regression model:
 \[
@@ -107,17 +103,18 @@ We can just use R to solve for this
 ``` {r summary1}
 summaries1 <- lm(Grade ~ Fun + Rumor)
 summary(summaries1)
+confint(summaries1)
 ```
 Using R, we see that the values of $\hat{\beta_0},\hat{\beta_1}$ and $\hat{\beta_2}$ which are:
-$\hat{\beta_0}=4.681e+00$,
+$\hat{\beta_0}=1.164e+01$,
 
-$\hat{\beta_1}=1.585e-05$,
+$\hat{\beta_1}=-5.469e-05$,
 
-$\hat{\beta_2}=-1.438e-06$
+$\hat{\beta_2}=3.066e-05$
 
 Finally after substituting, the linear regression equation would:
 \begin{align}
-&y=4.681e+00+1.585e-05x_1--1.438e-06x_2
+&y=(1.164e+01)+(-5.469e-05)(x_1)-(3.066e-05)(x_2)
 \end{align}
 
 <br>
@@ -140,7 +137,7 @@ summaries2 <- lm(Grade ~ Fun + Rumor)
 anova(summaries2)
 ```
 
-Looking at the summary we could see that $σ^2$ is estimated to be 0.3721.
+Looking at the summary we could see that $σ^2$ is estimated to be 1.5505.
 
 <br>
 <br>
@@ -157,7 +154,7 @@ Where $C_{jj}=(X'X)^{-1}.$
 Using the data from the table we can construct $X$ and $X'$ which is represented by these table respectively:
 
 ``` {r X and X, include=TRUE, echo=FALSE}
-xvalues <- c(1,94813.08411,114632.7684,1,202473.1183,291937.9845,1,248076.9231,295419.8473,1,316880,373679.245283019,1,297539.682539683,290620.155,1,420340.9091,362647.0588,1,511129.0323,293425.9259) 
+xvalues <- c(1,134604,111331,1,175819,121939,1,90390,75904,1,94074,79775,1,100143,102528,1,51431,59613,1,29275,50996) 
 x <- matrix(xvalues,nrow=7,ncol=3,byrow=TRUE)
 x
 t(x) 
@@ -177,20 +174,31 @@ xx
 With $X'X$ computed we can now look for its inverse $(X'X)^{-1}$:
 
 ``` {r inverse, include=TRUE, echo=FALSE}
- 
 x <- matrix(xvalues,nrow=7,ncol=3,byrow=TRUE)
 xxinv <- solve(xx)
 xxinv
 ```
 
-The variances of the regression coefficients are given by the diagonal elements thus  $C_{00}$ is 2.083207e+00, $C_{11}$ is 1.569781e-11, and $C_{22}$ is 4.142065e-11 and now we can solve $se(\beta_0)$,$se(\beta_1)$ and $se(\beta_2)$:
+The variances of the regression coefficients are given by the diagonal elements thus  $C_{00}$ is 4.371973e+00, $C_{11}$ is 8.405655e-10, and $C_{22}$ is 2.825788e-09 and now we can solve $se(\beta_0)$,$se(\beta_1)$ and $se(\beta_2)$:
 \[
 \begin{align} 
-&se(\beta_0)=\sqrt{0.3721(2.083207e+00)}=8.805e-01\\
-&se(\beta_1)=\sqrt{0.3721(1.569781e-11)}=2.417e-06\\
-&se(\beta_2)=\sqrt{0.3721(4.142065e-11)}=3.926e-06\\
+&se(\beta_0)=\sqrt{0.3721(4.371973e+00)}=1.275465\\
+&se(\beta_1)=\sqrt{0.3721(8.405655e-10)}=1.768543e-05\\
+&se(\beta_2)=\sqrt{0.3721(2.825788e-09)}=3.242647e-05\\
 \end{align}
 \]
+
+Equations are shown below:
+
+``` {r equations}
+b0 <- sqrt(0.3721*4.371973e+00)
+b0
+b1 <- sqrt(0.3721*8.405655e-10)
+b1
+b2 <- sqrt(0.3721*2.825788e-09)
+b2
+```
+
 
 We can also see these numbers in the summary table we did earlier
 
@@ -225,8 +233,7 @@ We can use this equation to fine SS_T:
 we can use R to find $y'y$
 ``` {r YY, include=TRUE, echo=FALSE}
 library(knitr)
-y.data <- c(6,7,8,9,10,11,12
-            ) 
+y.data <- c(6,7,8,9,10,11,12) 
 y <- matrix(y.data,nrow=7,ncol=1,byrow=TRUE)
 yp <- t(y)
 ypy <- (yp %*% y)
@@ -257,8 +264,8 @@ $F_0=\frac{\frac{SS_r}{k}}{\frac{SS_E}{n-p}}=\frac{MS_r}{MS_e}$
 \begin{align} 
   \end{align} 
 \]
-## Discussion
 
+# Discussion
 
-## Conclusion
+# Conclusion
 
