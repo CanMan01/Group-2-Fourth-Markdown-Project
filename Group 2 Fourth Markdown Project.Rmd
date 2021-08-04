@@ -158,6 +158,60 @@ summary(summaries1)
 <br>
 
 
+The Hypothesis for these are:
+
+$H_0$:$\beta_1=\beta_2=0$
+
+
+$H_1$:$\beta_j≠0$ for at least one j
+
+While the equation need is :
+
+$F_0=\frac{\frac{SS_r}{k}}{\frac{SS_E}{n-p}}=\frac{MS_r}{MS_e}$
+
+To Find $SS_R$, we must first find $SS_T$ as $SS_R=SS_T-SS_E$
+
+We can use this equation to fine SS_T:
+
+\[
+  SS_T=y'y-(\frac{(\sum{y_I}1)^2}{n})    
+\]
+
+we can use R to find $y'y$
+``` {r YY, include=TRUE, echo=FALSE}
+library(knitr)
+y.data <- c(6,7,8,9,10,11,12
+            ) 
+y <- matrix(y.data,nrow=7,ncol=1,byrow=TRUE)
+yp <- t(y)
+ypy <- (yp %*% y)
+ypy
+```
+$(\sum{y_I}1)^2)$ can be solve:
+$(\sum{y_I}1)^2=(6+7+8+9+10+11+12)^2=3969$
+
+Substituting the value we can now solve for $SS_T$ as well and $SS_R$
+\[
+\begin{align} 
+  SS_T&=595-(\frac{(3969)^2}{7})\\
+  &=32446
+  \end{align} 
+\]
+Given that $SS_E$ is equal to 1.4886 (See SummarIES2 )
+\[
+\begin{align} 
+  SS_R&=32446-7927.6\\
+  &=24518
+  \end{align} 
+\]
+
+Finally we can geT the value of $F_0$
+
+$F_0=\frac{\frac{SS_r}{k}}{\frac{SS_E}{n-p}}=\frac{MS_r}{MS_e}$
+\[
+\begin{align} 
+  \end{align} 
+\]
 ## Discussion
 
 
