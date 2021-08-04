@@ -28,17 +28,67 @@ options(htmltools.dir.version = FALSE)
 ## Parameters of Interest
 
 
-## Simple Linear Regression
+
+
+
+
 <br>
 
-
-
 > ### A. Geting the Linear Regression
+
+## Graphs
+But first, we must graph the values to see the if there is a relationship between them.
+
+Graphs are shown below through the use of R.
+```{r table, echo=FALSE}
+library(readxl)
+bullying <- read_excel("~/GitHub/Group-2-Fourth-Markdown-Project/Table.xlsx")
+Fun <- bullying$`Being made fun of`
+Rumor <- bullying$`Spreading rumors`
+Grade <- bullying$`Grade`
+```
+
+``` {r mlgraphs, echo = FALSE}
+plot(bullying)
+```
+
+``` {r funvrumor, echo=FALSE}
+plot(Fun, Rumor, main = "Plot of the types of bullying")
+abline(lm(Rumor~Fun), col = "red")
+```
+
+``` {r gradevfun, echo=FALSE}
+plot(Grade, Fun)
+abline(lm(Fun~Grade), col = "red")
+```
+
+``` {r gradevrumor, echo=FALSE}
+plot(Grade, Rumor)
+abline(lm(Rumor~Grade), col = "red")
+```
+
+
+Let's display the values imported from the excel table:
+
+
+``` {r kable1, echo=FALSE}
+library(kableExtra)
+kable(bullying)
+```
+
+The values above show the amount of people bullied per grade level as well as the type of bullying they experience
+
+We use these graphs to examine whether there is a relationship between the variables. These graphs will also help us in forming a linear regression model.
+
+
+## Multiple Linear Regression
 
 We can use the Formula for linear regression model:
 \[
   Y=\beta_0+\beta_1x_1+\beta_2x_2+\epsilon
 \]
+
+
 
 Before we can use that equation, we need to use the least square equation to get the value of $\hat{\beta_0},\hat{\beta_1}$ and $\hat{\beta_2}$ which is represented by:
 
@@ -49,12 +99,12 @@ $${\hat{\beta}}_0\sum_{i=1}^{n}x_{i1} + {\hat{\beta}}_1\sum_{i=1}^{n}x_{i1}^2+ {
 
 $${\hat{\beta}}_0\sum_{i=1}^{n}x_{i2} + {\hat{\beta}}_1\sum_{i=1}^{n}x_{i1}x_{i2}+ {\hat{\beta}}_2\sum_{i=1}^{n}x_{i2}^2 = \sum_{i=1}^{n}x_{i2}y_{i}$$
 
+
+
 We can just use R to solve for this
 
-``` {r}
-Grade <- c(6,7,8,9,10,11,12)
-Fun <- c(94813.08411,202473.1183,248076.9231,316880,297539.6825,420340.9091,511129.0323)
-Rumor <- c(114632.7684,291937.9845,295419.8473,373679.2453,290620.155,362647.0588,293425.9259)
+
+``` {r summary1}
 summaries1 <- lm(Grade ~ Fun + Rumor)
 summary(summaries1)
 ```
@@ -65,13 +115,15 @@ $\hat{\beta_1}=1.585e-05$,
 
 $\hat{\beta_2}=-1.438e-06$
 
-Finally after subtituting, the linear regression equation would:
+Finally after substituting, the linear regression equation would:
 \begin{align}
 &y=4.681e+00+1.585e-05x_1--1.438e-06x_2
 \end{align}
 
 <br>
 <br>
+
+
 
 > ### B. Estimating σ2.
 
@@ -84,9 +136,6 @@ To estimate $σ^2$, we can use the following formula:
 But we could just use R again to calculate it for use. Thus using the following code:
 
 ``` {r}
-Grade <- c(6,7,8,9,10,11,12)
-Fun <- c(94813.08411,202473.1183,248076.9231,316880,297539.6825,420340.9091,511129.0323)
-Rumor <- c(114632.7684,291937.9845,295419.8473,373679.2453,290620.155,362647.0588,293425.9259)
 summaries2 <- lm(Grade ~ Fun + Rumor)
 anova(summaries2)
 ```
@@ -119,7 +168,6 @@ xtrans <- t(x)
 Then we can compute for $X'X$
 
 ``` {r XX, include=TRUE, echo=FALSE}
-xvalues <- c(1,94813.08411,114632.7684,1,202473.1183,291937.9845,1,248076.9231,295419.8473,1,316880,373679.245283019,1,297539.682539683,290620.155,1,420340.9091,362647.0588,1,511129.0323,293425.9259) 
 x <- matrix(xvalues,nrow=7,ncol=3,byrow=TRUE)
 xtrans <- t(x)
 xx <- (xtrans %*% x)
@@ -129,7 +177,7 @@ xx
 With $X'X$ computed we can now look for its inverse $(X'X)^{-1}$:
 
 ``` {r inverse, include=TRUE, echo=FALSE}
-xvalues <- c(1,94813.08411,114632.7684,1,202473.1183,291937.9845,1,248076.9231,295419.8473,1,316880,373679.245283019,1,297539.682539683,290620.155,1,420340.9091,362647.0588,1,511129.0323,293425.9259) 
+ 
 x <- matrix(xvalues,nrow=7,ncol=3,byrow=TRUE)
 xxinv <- solve(xx)
 xxinv
@@ -147,9 +195,6 @@ The variances of the regression coefficients are given by the diagonal elements 
 We can also see these numbers in the summary table we did earlier
 
 ``` {r}
-Grade <- c(6,7,8,9,10,11,12)
-Fun <- c(94813.08411,202473.1183,248076.9231,316880,297539.6825,420340.9091,511129.0323)
-Rumor <- c(114632.7684,291937.9845,295419.8473,373679.2453,290620.155,362647.0588,293425.9259)
 summaries1 <- lm(Grade ~ Fun + Rumor)
 summary(summaries1)
 ```
@@ -197,7 +242,7 @@ Substituting the value we can now solve for $SS_T$ as well and $SS_R$
   &=32446
   \end{align} 
 \]
-Given that $SS_E$ is equal to 1.4886 (See SummarIES2 )
+Given that $SS_E$ is equal to 1.4886 (See Summaries2 )
 \[
 \begin{align} 
   SS_R&=32446-7927.6\\
@@ -205,7 +250,7 @@ Given that $SS_E$ is equal to 1.4886 (See SummarIES2 )
   \end{align} 
 \]
 
-Finally we can geT the value of $F_0$
+Finally we can get the value of $F_0$
 
 $F_0=\frac{\frac{SS_r}{k}}{\frac{SS_E}{n-p}}=\frac{MS_r}{MS_e}$
 \[
