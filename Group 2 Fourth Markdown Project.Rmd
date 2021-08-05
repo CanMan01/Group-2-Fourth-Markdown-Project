@@ -22,18 +22,28 @@ options(htmltools.dir.version = FALSE)
 # Introduction
 
 
+  <font size = "4"> In the Philippines, bullying remains a prevalent issue. A study was made in selected schools to see how many were victims of this act. 40% of the population of 340 six-grader students (male and female) said they had at least experienced it once (Sanapo, 2017). 136 out of the 340 students were victims of bullying. Though it may not take up the majority of the population, this is still a significantly big number. Thus action need to be taken to reduce it. However, to solve this problem, we need to first understand the nature of bullying. For the paper we will be looking into the escalation of bullying, specifically whether a seemingly small act like insults can lead into more and more severe actions such as spreading rumors. Though we may be using statistics from the United States, the findings found here can still be useful in implementing solutions in this country. </font> ^[Source: Sanapo, M. S. (2017). When kids hurt other kids: Bullying in Philippine schools. Psychology, 8(14), 2469.]
+
+
+<font size = "3">Source:</font>
+
+
+
+<font size = "3">Sanapo, M. S. (2017). When kids hurt other kids: Bullying in Philippine schools. Psychology, 8(14), 2469.</font>
+
 # Methodology
+The type of testing we will use will be multiple linear regression.
+We will need to graph the values and examine the relationship between them. After, we will use the different functions in R such as the lm function to form a linear regression model. We can also find out different values such as $\sigma^2$ and the 
 
 
-
-# Simple Linear Regression
+# Multiple Linear Regression
 
 <br>
 
-> ### A. Geting the Linear Regression
+> ### Geting the Linear Regression
 
 ## Graphs
-But first, we must graph the values to see the if there is a relationship between them.
+First, we must graph the values to see the if there is a relationship between them.
 
 Graphs are shown below through the use of R.
 ```{r table, echo=FALSE}
@@ -122,10 +132,10 @@ Finally after substituting, the linear regression equation would:
 
 
 
-> ### B. Estimating σ2.
+> ### Estimating σ2.
 
 <br>
-To estimate $σ^2$, we can use the following formula:
+To estimate $\sigma^2$, we can use the following formula:
 \[
   σ^2=\frac{SS_E}{n-p}
 \]
@@ -249,7 +259,7 @@ Substituting the value we can now solve for $SS_T$ as well and $SS_R$
   &=32446
   \end{align} 
 \]
-Given that $SS_E$ is equal to 1.4886 (See Summaries2 )
+Given that $SS_E$ is equal to 1.5505 (See Summaries2 )
 \[
 \begin{align} 
   SS_R&=32446-7927.6\\
@@ -278,3 +288,8 @@ This information tells us that there is a need of higher attention to bullying e
 
 # Conclusion
 
+To conclude, bullying is a big problem, especially in modern day schooling. Bullying normally starts from something small and evolves into bigger and physically harmful deeds. Identifying the relationship between two types of bullying can help people realize how bullying can get worse if there is no intervention.
+
+The upward trend between the two types of bullying in the data set shows that there is an increase in bullying between being made fun of and spreading rumors. As the bullying escalates, the number of people being bullied also increases.
+
+There is a noticeable decline in the number of students bullied as grade levels increase. On paper, this indicates lesser bullying as students get older. However, the researchers believe that the decrease in reported bullying cases is due to students not wanting to admit that they are being bullied in school. This is understandable since some people refuse to openly share about their experience being bullied. 
