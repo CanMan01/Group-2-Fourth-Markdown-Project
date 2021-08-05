@@ -1,0 +1,17 @@
+---
+title: "Introduction"
+author: "Javier Bolong"
+date: "8/4/2021"
+output: html_document
+---
+<font size = "3">Introduction: </font>
+
+<p>&nbsp;</p>
+  <font size = "3"> In the Philippines, bullying remains a prevalent issue. A study was made in selected schools to see how many were victims of this act. 40% of the population of 340 six-grader students (male and female) said they had at least experienced it once (Sanapo, 2017). 136 out of the 340 students were victims of bullying. Though it may not take up the majority of the population, this is still a significantly big number. Thus action need to be taken to reduce it. However, to solve this problem, we need to first understand the nature of bullying. For the paper we will be looking into the escalation of bullying, specifically whether a seemingly small act like insults can lead into more and more severe actions such as spreading rumors. Though we may be using statistics from the United States, the findings found here can still be useful in implementing solutions in this country.</font>
+<p>&nbsp;</p>
+
+<font size = "3">Source:</font>
+
+<p>&nbsp;</p>
+
+<font size = "3">Sanapo, M. S. (2017). When kids hurt other kids: Bullying in Philippine schools. Psychology, 8(14), 2469.</font>
