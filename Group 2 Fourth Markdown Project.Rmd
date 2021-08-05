@@ -269,11 +269,11 @@ $F_0=\frac{\frac{SS_r}{k}}{\frac{SS_E}{n-p}}=\frac{MS_r}{MS_e}$
 
 Results from linear regression exhibit that there is a relationship between each of the variables being studied (grade level, the types of bullying experienced: being made fun of and spreading of rumors) as seen in the best fit lines shown in the graphs above.
 
-It can be seen that there is a general downward trend in the second and third graphs indicating that bullying decreases as the grade level increases or as the students get older. This is supported by a study stating that verbal bullying is the most common form of bullying and that the majority of the occurences in bullying occurs in secondary schools.
+It can be seen that there is a general downward trend in the second and third graphs indicating that bullying decreases as the grade level increases or as the students get older. This is supported by a study stating that verbal bullying is the most common form of bullying and that the majority of the occurences of bullying occurs in secondary schools.
 
-The trend of younger students experiencing more bullying than higher level students may be explained by power imbalances in relationships between people. In instances of bullying, the bully tends to be the person with higher position or power compared to the one being bullied. This power imbalance is also what causes bullies to repeatedly bully having the power to do so. 
+The trend of younger students experiencing more bullying than higher level students may be explained by power imbalances in relationships between people. In instances of bullying, the bully tends to be the person with higher position or power compared to the one being bullied. This power imbalance is also what causes bullies to repeatedly bully, having the power to do so. 
 
-This information tells us that there is a need to provide attention to bullying especially to the ones involving younger kids. In school grounds, students must always be supervised by teachers in order to prevent occurrences of bullying. Doing so will be a step towards creating a better environment for children to learn and grow.
+This information tells us that there is a need of higher attention to bullying especially to the ones involving younger kids. In school grounds, students must always be supervised by teachers in order to prevent occurrences of bullying. Doing so will be a step towards creating a better environment for children to learn and grow.
 
 
 # Conclusion
