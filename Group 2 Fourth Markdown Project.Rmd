@@ -79,7 +79,7 @@ library(kableExtra)
 kable(bullying)
 ```
 
-The values above show the amount of people bullied per grade level as well as the type of bullying they experience
+The values above show the percentage distribution of people bullied per grade level as well as the type of bullying they experience
 
 We use these graphs to examine whether there is a relationship between the variables. These graphs will also help us in forming a linear regression model.
 
@@ -121,7 +121,7 @@ $\hat{\beta_2}=0.12466$
 
 Finally after substituting, the linear regression equation would:
 \begin{align}
-&y=(13.61266)+(-0.45228)(x_1)-(0.12466)(x_2)
+&y=(13.61266)+(-0.45228)(x_1)+(0.12466)(x_2)
 \end{align}
 
 <br>
@@ -220,7 +220,7 @@ summary(summaries1)
 Using the multiple linear regression model we have obtained, we can predict certain values of the data set.
 
 \begin{align}
-&y=(13.61266)+(-0.45228)(x_1)-(0.12466)(x_2)
+&y=(13.61266)+(-0.45228)(x_1)+(0.12466)(x_2)
 \end{align}
 
 In our data set, the y is the grade level in the multiple linear regression model.
@@ -230,18 +230,18 @@ Let's say we want to predict the grade level if the percentage of students being
 Substituting it into our regression model:
 
 \begin{align}
-&y=(13.61266)+(-0.45228)(16.3)-(0.12466)(14.0)
+&y=(13.61266)+(-0.45228)(16.3)+(0.12466)(14.0)
 \end{align}
 
 ``` {r regression, echo=FALSE}
-y <- (13.61266)+(-0.45228*16.3)-(0.12466*14.0)
+y <- (13.61266)+(-0.45228*16.3)+(0.12466*14.0)
 y
 ```
 
 Thus, the answer will be
 `r y`
 
-Rounding the number down, the student is approximately Grade 4.
+Rounding the number down, the student is approximately Grade 7.
 
 # Discussion
 

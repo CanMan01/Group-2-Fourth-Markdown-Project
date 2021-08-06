@@ -1,0 +1,11 @@
+name: Publish Document
+title:
+username:
+account: rpubs
+server: rpubs.com
+hostUrl: rpubs.com
+appId: https://api.rpubs.com/api/v1/document/796989/7ca11927559c47808ac8978743cf384c
+bundleId: https://api.rpubs.com/api/v1/document/796989/7ca11927559c47808ac8978743cf384c
+url: http://rpubs.com/CanMan01/796989
+when: 1628243077.03806
+lastSyncTime: 1628243077.03806
