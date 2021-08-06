@@ -121,7 +121,7 @@ $\hat{\beta_2}=0.12466$
 
 Finally after substituting, the linear regression equation would:
 \begin{align}
-&y=(13.61266)+(-0.45228)(x_1)-(0.12466)(x_2)
+&y=(13.61266)+(-0.45228)(x_1)+(0.12466)(x_2)
 \end{align}
 
 <br>
