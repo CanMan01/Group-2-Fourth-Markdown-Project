@@ -21,17 +21,14 @@ options(htmltools.dir.version = FALSE)
 ```
 # Introduction
 
+![](C:/Users/doibl/Desktop/Pictures/Fourth Markdown Photos/bullying1.jpg)
 
-  <font size = "4"> In the Philippines, bullying remains a prevalent issue. A study was made in selected schools to see how many were victims of this act. 40% of the population of 340 six-grader students (male and female) said they had at least experienced it once (Sanapo, 2017). 136 out of the 340 students were victims of bullying. Though it may not take up the majority of the population, this is still a significantly big number. Thus action need to be taken to reduce it. However, to solve this problem, we need to first understand the nature of bullying. For the paper we will be looking into the escalation of bullying, specifically whether a seemingly small act like insults can lead into more and more severe actions such as spreading rumors. Though we may be using statistics from the United States, the findings found here can still be useful in implementing solutions in this country. </font> ^[Source: Sanapo, M. S. (2017). When kids hurt other kids: Bullying in Philippine schools. Psychology, 8(14), 2469.]
-
-
-<font size = "3">Source:</font>
+   In the Philippines, bullying remains a prevalent issue. A study was made in selected schools to see how many were victims of this act. 40% of the population of 340 six-grader students (male and female) said they had at least experienced it once (Sanapo, 2017). 136 out of the 340 students were victims of bullying. Though it may not take up the majority of the population, this is still a significantly big number. Thus action need to be taken to reduce it. However, to solve this problem, we need to first understand the nature of bullying. For the paper we will be looking into the escalation of bullying, specifically whether a seemingly small act like insults can lead into more and more severe actions such as spreading rumors. Though we may be using statistics from the United States, the findings found here can still be useful in implementing solutions in this country.^[Source: Sanapo, M. S. (2017). When kids hurt other kids: Bullying in Philippine schools. Psychology, 8(14), 2469.]
 
 
-
-<font size = "3">Sanapo, M. S. (2017). When kids hurt other kids: Bullying in Philippine schools. Psychology, 8(14), 2469.</font>
 
 # Methodology
+
 The type of testing we will use will be multiple linear regression.
 We will need to graph the values and examine the relationship between them. After, we will use the different functions in R such as the lm function to form a linear regression model. We can also find out different values such as $\sigma^2$ and the 
 
@@ -48,7 +45,7 @@ First, we must graph the values to see the if there is a relationship between th
 Graphs are shown below through the use of R.
 ```{r table, echo=FALSE}
 library(readxl)
-bullying <- read_excel("~/GitHub/Group-2-Fourth-Markdown-Project/Table.xlsx")
+bullying <- read_excel("~/GitHub/Group-2-Fourth-Markdown-Project/Percent.xlsx")
 Fun <- bullying$`Being made fun of`
 Rumor <- bullying$`Spreading rumors`
 Grade <- bullying$`Grade`
@@ -59,17 +56,17 @@ plot(bullying)
 ```
 
 ``` {r funvrumor, echo=FALSE}
-plot(Fun, Rumor, main = "Plot of the types of bullying")
+plot(Fun, Rumor, main = "Plot of the types of bullying", xlab = "Being made fun of", ylab = "Spreading Rumors(%)")
 abline(lm(Rumor~Fun), col = "red")
 ```
 
 ``` {r gradevfun, echo=FALSE}
-plot(Grade, Fun)
+plot(Grade, Fun, main = "Plot of Grade Levels and Types of Bullying", xlab = "Grade Level", ylab = "Being made fun of(%)")
 abline(lm(Fun~Grade), col = "red")
 ```
 
 ``` {r gradevrumor, echo=FALSE}
-plot(Grade, Rumor)
+plot(Grade, Rumor, main = "Plot of Grade Levels against Spreading of Rumors", xlab = "Grade Level", ylab = "Spreading of Rumors(%)")
 abline(lm(Rumor~Grade), col = "red")
 ```
 
@@ -116,15 +113,15 @@ summary(summaries1)
 confint(summaries1)
 ```
 Using R, we see that the values of $\hat{\beta_0},\hat{\beta_1}$ and $\hat{\beta_2}$ which are:
-$\hat{\beta_0}=1.164e+01$,
+$\hat{\beta_0}=13.61266$,
 
-$\hat{\beta_1}=-5.469e-05$,
+$\hat{\beta_1}=-0.45228$,
 
-$\hat{\beta_2}=3.066e-05$
+$\hat{\beta_2}=0.12466$
 
 Finally after substituting, the linear regression equation would:
 \begin{align}
-&y=(1.164e+01)+(-5.469e-05)(x_1)-(3.066e-05)(x_2)
+&y=(13.61266)+(-0.45228)(x_1)-(0.12466)(x_2)
 \end{align}
 
 <br>
@@ -147,12 +144,12 @@ summaries2 <- lm(Grade ~ Fun + Rumor)
 anova(summaries2)
 ```
 
-Looking at the summary we could see that $σ^2$ is estimated to be 1.5505.
+Looking at the summary we could see that $σ^2$ is estimated to be 0.1082.
 
 <br>
 <br>
 
-> ### C. Computing for the standard errors of the regression coefficients.
+> ### Computing for the standard errors of the regression coefficients.
 
 <br>
 To compute for the standard errors of the regression coefficients we can use the equation:
@@ -164,7 +161,7 @@ Where $C_{jj}=(X'X)^{-1}.$
 Using the data from the table we can construct $X$ and $X'$ which is represented by these table respectively:
 
 ``` {r X and X, include=TRUE, echo=FALSE}
-xvalues <- c(1,134604,111331,1,175819,121939,1,90390,75904,1,94074,79775,1,100143,102528,1,51431,59613,1,29275,50996) 
+xvalues <- c(1,21.4,17.1,1,18.6,12.9,1,15.6,13.1,1,12.5,10.6,1,12.6,12.9,1,8.8,10.2,1,6.2,10.8) 
 x <- matrix(xvalues,nrow=7,ncol=3,byrow=TRUE)
 x
 t(x) 
@@ -192,20 +189,20 @@ xxinv
 The variances of the regression coefficients are given by the diagonal elements thus  $C_{00}$ is 4.371973e+00, $C_{11}$ is 8.405655e-10, and $C_{22}$ is 2.825788e-09 and now we can solve $se(\beta_0)$,$se(\beta_1)$ and $se(\beta_2)$:
 \[
 \begin{align} 
-&se(\beta_0)=\sqrt{0.3721(4.371973e+00)}=1.275465\\
-&se(\beta_1)=\sqrt{0.3721(8.405655e-10)}=1.768543e-05\\
-&se(\beta_2)=\sqrt{0.3721(2.825788e-09)}=3.242647e-05\\
+&se(\beta_0)=\sqrt{0.3721(7.0732968)}=1.622336\\
+&se(\beta_1)=\sqrt{0.3721(0.02148160)}=0.08940528\\
+&se(\beta_2)=\sqrt{0.3721(0.10847568)}=0.2009074\\
 \end{align}
 \]
 
 Equations are shown below:
 
 ``` {r equations}
-b0 <- sqrt(0.3721*4.371973e+00)
+b0 <- sqrt(0.3721*7.0732968)
 b0
-b1 <- sqrt(0.3721*8.405655e-10)
+b1 <- sqrt(0.3721*0.02148160)
 b1
-b2 <- sqrt(0.3721*2.825788e-09)
+b2 <- sqrt(0.3721*0.10847568)
 b2
 ```
 
@@ -220,64 +217,45 @@ summary(summaries1)
 <br>
 <br>
 
+Using the multiple linear regression model we have obtained, we can predict certain values of the data set.
 
-The Hypothesis for these are:
+\begin{align}
+&y=(13.61266)+(-0.45228)(x_1)-(0.12466)(x_2)
+\end{align}
 
-$H_0$:$\beta_1=\beta_2=0$
+In our data set, the y is the grade level in the multiple linear regression model.
 
+Let's say we want to predict the grade level if the percentage of students being made fun of is 16.3% and the percentage of students being gossipped about is 14.0%.
 
-$H_1$:$\beta_j≠0$ for at least one j
+Substituting it into our regression model:
 
-While the equation need is :
+\begin{align}
+&y=(13.61266)+(-0.45228)(16.3)-(0.12466)(14.0)
+\end{align}
 
-$F_0=\frac{\frac{SS_r}{k}}{\frac{SS_E}{n-p}}=\frac{MS_r}{MS_e}$
-
-To Find $SS_R$, we must first find $SS_T$ as $SS_R=SS_T-SS_E$
-
-We can use this equation to fine SS_T:
-
-\[
-  SS_T=y'y-(\frac{(\sum{y_I}1)^2}{n})    
-\]
-
-we can use R to find $y'y$
-``` {r YY, include=TRUE, echo=FALSE}
-library(knitr)
-y.data <- c(6,7,8,9,10,11,12) 
-y <- matrix(y.data,nrow=7,ncol=1,byrow=TRUE)
-yp <- t(y)
-ypy <- (yp %*% y)
-ypy
+``` {r regression, echo=FALSE}
+y <- (13.61266)+(-0.45228*16.3)-(0.12466*14.0)
+y
 ```
-$(\sum{y_I}1)^2)$ can be solve:
-$(\sum{y_I}1)^2=(6+7+8+9+10+11+12)^2=3969$
 
-Substituting the value we can now solve for $SS_T$ as well and $SS_R$
-\[
-\begin{align} 
-  SS_T&=595-(\frac{(3969)^2}{7})\\
-  &=32446
-  \end{align} 
-\]
-Given that $SS_E$ is equal to 1.5505 (See Summaries2 )
-\[
-\begin{align} 
-  SS_R&=32446-7927.6\\
-  &=24518
-  \end{align} 
-\]
+Thus, the answer will be
+`r y`
 
-Finally we can get the value of $F_0$
-
-$F_0=\frac{\frac{SS_r}{k}}{\frac{SS_E}{n-p}}=\frac{MS_r}{MS_e}$
-\[
-\begin{align} 
-  \end{align} 
-\]
+Rounding the number down, the student is approximately Grade 4.
 
 # Discussion
 
-Results from linear regression exhibit that there is a relationship between each of the variables being studied (grade level, the types of bullying experienced: being made fun of and spreading of rumors) as seen in the best fit lines shown in the graphs above.
+Results from linear regression exhibit that there is a relationship between each of the variables being studied (grade level, the types of bullying experienced: being made fun of and spreading of rumors) as seen in the best fit lines shown in the graphs.
+
+``` {r gradevfun1, echo=FALSE}
+plot(Grade, Fun, main = "Plot of Grade Levels and Types of Bullying", xlab = "Grade Level", ylab = "Being made fun of(%)")
+abline(lm(Fun~Grade), col = "red")
+```
+
+``` {r gradevrumor2, echo=FALSE}
+plot(Grade, Rumor, main = "Plot of Grade Levels against Spreading of Rumors", xlab = "Grade Level", ylab = "Spreading of Rumors(%)")
+abline(lm(Rumor~Grade), col = "red")
+```
 
 It can be seen that there is a general downward trend in the second and third graphs indicating that bullying decreases as the grade level increases or as the students get older. This is supported by a study stating that verbal bullying is the most common form of bullying and that the majority of the occurences of bullying occurs in secondary schools.
 
@@ -288,8 +266,15 @@ This information tells us that there is a need of higher attention to bullying e
 
 # Conclusion
 
+![](C:/Users/doibl/Desktop/Pictures/Fourth Markdown Photos/madefun.jpg)
+
 To conclude, bullying is a big problem, especially in modern day schooling. Bullying normally starts from something small and evolves into bigger and physically harmful deeds. Identifying the relationship between two types of bullying can help people realize how bullying can get worse if there is no intervention.
 
 The upward trend between the two types of bullying in the data set shows that there is an increase in bullying between being made fun of and spreading rumors. As the bullying escalates, the number of people being bullied also increases.
 
+
+![](C:/Users/doibl/Desktop/Pictures/Fourth Markdown Photos/rumor.jpg)
+
 There is a noticeable decline in the number of students bullied as grade levels increase. On paper, this indicates lesser bullying as students get older. However, the researchers believe that the decrease in reported bullying cases is due to students not wanting to admit that they are being bullied in school. This is understandable since some people refuse to openly share about their experience being bullied. 
+
+As for the values of $\sigma^2$ and the standard errors of regression coefficients, we can use these in further testing or to support our present data. The low p-value of the being made fun of variable in the table of Summary 1 tells us that this variable is significant.
